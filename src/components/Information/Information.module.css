@@ -1,0 +1,42 @@
+body {
+  color: #fff;
+}
+
+.container {
+  background-color: rgb(70, 69, 69);
+}
+
+.info_wrapper {
+  padding: 40px;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px 0;
+}
+
+.item {
+  border-bottom: 1px solid rgb(122, 122, 122);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.link {
+  text-decoration: underline;
+}
+
+.info_item {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.info {
+  text-decoration: none;
+}
