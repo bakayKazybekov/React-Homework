@@ -17,19 +17,37 @@
 
 input {
     width: 200px;
-    height: 20px;
+    height: 25px;
     border: 1px solid gray;
     border-radius: 10px;
 }
 
-li {
+.todo_list {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    gap: 20px;
+}
+
+li {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.title {
+    font-size: 16px;
+}
+
+.task {
+    font-size: 11px;
+    text-align: left;
 }
 
 button {
-    padding: 5px 10px;
+    padding: 2px 7px;
     border: none;
     border-radius: 7px;
     color: #fff;
@@ -52,11 +70,4 @@ button {
 
 .add_btn {
     background-color: rgb(0, 168, 0);
-}
-
-.todo_list {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
