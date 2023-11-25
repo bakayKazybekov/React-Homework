@@ -1,13 +1,18 @@
 import React from "react"
 import { useCallback } from "react"
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { deleteTodo } from "../../../../store"
+import { editTodo } from "../../../../store"
 
-const TodoListRender = React.memo(({ 
-        todoList, 
-        setTodoList 
-    }) => {
+
+const TodoListRender = React.memo(({}) => {
+
+    const store = useSelector((state) => state.todoList)
+    const dispatch = useDispatch();
     
     const deleteTask = useCallback((id) => {
-        setTodoList((prevTodoList) => prevTodoList.filter((i) => i.id !== id && i))
+        dispatch(deleteTodo(id))
     }, [])
 
     const editTask = useCallback((obj) => {
@@ -19,12 +24,12 @@ const TodoListRender = React.memo(({
         }
         obj.title = newTitle;
         obj.task = newTask;
-        setTodoList((prev) => prev.filter((i) => i.id === obj.id ? obj : i))
+        dispatch(editTodo(obj))
     }, [])
 
     return (
         <ul className='todo_list'>
-            {todoList.map((i) => {
+            {store.map((i) => {
                 return <li key={i.id}>
                     <h3 className="title">{i.title}</h3>
                     <span className="task">{i.task}</span>

@@ -1,6 +1,10 @@
 import { util } from '../../../../util/util'
+import { useDispatch } from 'react-redux'
+import { addTodo } from "../../../../store"
 
-function AddTask ({ setTodoList }) {
+function AddTask ({}) {
+    const dispatch = useDispatch()
+
     const onSubmit = (e) => {
         e.preventDefault()
         const firstInput = e.target[0].value;
@@ -9,7 +13,12 @@ function AddTask ({ setTodoList }) {
             alert('Заполните все поля!')
             return
         }
-        setTodoList((prevTodoList) => [...prevTodoList, {...util(e.target), id: prevTodoList.length}])
+        const obj = {
+            ...util(e.target),
+            id: Math.random()
+        }
+
+        dispatch(addTodo(obj))
     }
 
     return (
