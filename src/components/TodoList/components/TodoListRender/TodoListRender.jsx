@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { deleteTodo } from "../../../../store"
 import { editTodo } from "../../../../store"
+import s from './TodoListRender.module.css'
 
 
-const TodoListRender = React.memo(({}) => {
+const TodoListRender = React.memo(() => {
 
-    const store = useSelector((state) => state.todoList)
+    const todoList = useSelector((state) => state.todoList)
     const dispatch = useDispatch();
     
     const deleteTask = useCallback((id) => {
@@ -27,16 +28,18 @@ const TodoListRender = React.memo(({}) => {
         dispatch(editTodo(obj))
     }, [])
 
+    // когда убираю return, prompt вызывается
     return (
-        <ul className='todo_list'>
-            {store.map((i) => {
-                return <li key={i.id}>
-                    <h3 className="title">{i.title}</h3>
-                    <span className="task">{i.task}</span>
-                    <div className="buttons">
+        <ul className={s.todo_list}>
+            {todoList.map((item) => {
+                const { id, title, task } = item
+                return <li className={s.li} key={id}>
+                    <h3 className={s.title}>{title}</h3>
+                    <span className={s.task}>{task}</span>
+                    <div className={s.buttons}>
                         {/* если написать onClick={editTask(i)}, оно же будет сразу вызываться */}
-                        <button onClick={() => editTask(i)} className='edit_btn'>Редактировать</button>
-                        <button onClick={() => deleteTask(i.id)} className='delete_btn'>Удалить</button>
+                        <button onClick={() => editTask(item)} className={s.edit_btn}>Редактировать</button>
+                        <button onClick={() => deleteTask(id)} className={s.delete_btn}>Удалить</button>
                     </div>
                 </li>
             })}

@@ -1,8 +1,9 @@
 import { util } from '../../../../util/util'
 import { useDispatch } from 'react-redux'
 import { addTodo } from "../../../../store"
+import s from './AddTask.module.css';
 
-function AddTask ({}) {
+function AddTask () {
     const dispatch = useDispatch()
 
     const onSubmit = (e) => {
@@ -22,16 +23,16 @@ function AddTask ({}) {
     }
 
     return (
-        <form className='wrapper' onSubmit={onSubmit}>
-            <label>
+        <form className={s.wrapper} onSubmit={onSubmit}>
+            <label className={s.label}>
                 <span>Заголовок задачи</span>
-                <input name='title' type="text"/>
+                <input className={s.input} name='title' type="text"/>
             </label>
-            <label>
+            <label className={s.label}>
                 <span>Задача</span>
-                <input name='task' type="text"/>
+                <input className={s.input} name='task' type="text"/>
             </label>
-            <button className='add_btn'>Добавить</button>
+            <button className={s.add_btn}>Добавить</button>
         </form>
     )
 }
