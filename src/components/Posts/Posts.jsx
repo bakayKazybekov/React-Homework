@@ -16,11 +16,13 @@ function Posts () {
     const [body, setBody] = useState('');
     const [posts, setPosts] = useState([]);
 
-    useEffect(async () => {
+    useEffect(() => {
+
         async function fetchData () {
             const data = await getPosts();
             setPosts(data);
         }
+
         fetchData();
     }, []);
 
