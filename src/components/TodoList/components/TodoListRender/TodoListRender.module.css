@@ -1,0 +1,46 @@
+.todo_list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.title {
+    font-size: 16px;
+}
+
+.task {
+    font-size: 11px;
+    text-align: left;
+}
+
+button {
+    padding: 2px 7px;
+    border: none;
+    border-radius: 7px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.li {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.edit_btn {
+    background-color: rgb(0, 110, 255);
+}
+
+.delete_btn {
+    background-color: rgba(255, 17, 0, 0.847);
+}
