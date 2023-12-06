@@ -1,11 +1,5 @@
 import { createStore } from "redux"
-
-const initialState = {
-    todoList: [],
-
-    posts: [],
-    users:[]
-}
+import { initialState } from "./initialState"
 
 function todoReducer (state = initialState, action) {
     switch (action.type) {
@@ -22,31 +16,15 @@ function todoReducer (state = initialState, action) {
         case 'EDIT_TODO': 
             return {
                 ...state,
-                todoList: state.todoList.filter((i) => i.id === action.payload.id ? action.payload : i)
+                todoList: state.todoList.map((i) => i.id === action.payload.id ? action.payload : i)
+            }
+        case 'CHANGE_DONE':
+            return {
+                ...state,
+                todoList: state.todoList.map((i) => i.id === action.payload ? {...i, isDone: !i.isDone} : i)
             }
         default:
             return state
-    }
-}
-
-export function addTodo (todo) {
-    return {
-        type: 'ADD_TODO',
-        payload: todo,
-    }
-}
-
-export function deleteTodo (id) {
-    return {
-        type: 'DELETE_TODO',
-        payload: id,
-    }
-}
-
-export function editTodo (obj) {
-    return {
-        type: 'EDIT_TODO',
-        payload: obj,
     }
 }
 

@@ -5,7 +5,6 @@ function UserForm ({ setUsers }) {
     const [errorFirstName, setErroFirstName] = useState(false);
     const onSunmit = (e) => {
         e.preventDefault();
-        console.log(util(e.target));
         setUsers((prevUsers) => [...prevUsers, {...util(e.target), id: prevUsers.length}]);
     }
     return (

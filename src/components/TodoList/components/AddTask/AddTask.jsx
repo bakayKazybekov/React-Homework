@@ -1,6 +1,6 @@
 import { util } from '../../../../util/util'
 import { useDispatch } from 'react-redux'
-import { addTodo } from "../../../../store"
+import { addTodo } from "../../../../store/actions"
 import s from './AddTask.module.css';
 
 function AddTask () {
@@ -16,7 +16,8 @@ function AddTask () {
         }
         const obj = {
             ...util(e.target),
-            id: Math.random()
+            id: Math.random(),
+            isDone: false,
         }
 
         dispatch(addTodo(obj))
