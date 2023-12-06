@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
       element: (
         <>
             <Header/>
-            <div>Корневой роут</div>
+            <div>Корневой роутep</div>
         </>
       ),
     },
