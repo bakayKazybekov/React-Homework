@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(244, 244, 244);
+}
+
+.error {
+    width: 600px;
+    text-align: center;
+    padding: 24px 16px;
+    margin: auto;
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+}

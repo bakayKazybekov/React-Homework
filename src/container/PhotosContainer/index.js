@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Photos from "../../components/Photos";
 import { fetchPhotos } from "../../store/photos/actions";
 import { addPhotos } from "../../store/photos/slice";
+import { getPhotos } from "../../store/selectors";
 
 function PhotosContainer () {
     const dispatch = useDispatch()
 
-    const photos = useSelector((state) => state.photosReducer.photos)
-    const isLoad = useSelector((state) => state.photosReducer.isLoad)
-    const error = useSelector((state) => state.photosReducer.error)
+    const { photos, isLoad, error } = useSelector(getPhotos)
 
     const handleAddPhoto = () => {
         dispatch(addPhotos(
@@ -21,12 +20,8 @@ function PhotosContainer () {
     useEffect(() => {
         dispatch(fetchPhotos())
     }, [dispatch])
-
-    return (
-        <>
-            {isLoad ? <h1>Загрузка Фотографий</h1> : <Photos error={error} photos={photos} handleAddPhoto={handleAddPhoto}/>}
-        </>
-    )
+    if (isLoad) return <h1>Загрузка Фотографий</h1>
+    return <Photos error={error} photos={photos} handleAddPhoto={handleAddPhoto}/>
 }
 
 export default PhotosContainer

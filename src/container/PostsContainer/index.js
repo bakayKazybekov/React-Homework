@@ -1,16 +1,16 @@
+import {  CircularProgress, LinearProgress, Stack } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Posts from "../../components/Posts";
 import { fetchPosts } from "../../store/posts/action";
 import { addPosts } from "../../store/posts/slice";
+import { getPosts } from "../../store/selectors";
 
 
 const PostsContainer = () => {
     const dispatch = useDispatch()
 
-    const posts = useSelector((state) => state.postsReducer.posts)
-    const isLoad = useSelector((state) => state.postsReducer.isLoad)
-    const error = useSelector((state) => state.postsReducer.error)
+    const { posts, isLoad, error } = useSelector(getPosts)
 
     const handleAddPost = () => {
         dispatch(addPosts(
@@ -24,12 +24,8 @@ const PostsContainer = () => {
         dispatch(fetchPosts())
     }, [dispatch])
     
-
-    return (
-        <>
-            {isLoad ? <h1>Загрузка Постов!</h1> : <Posts error={error} posts={posts} handleAddPost={handleAddPost}/>}
-        </>
-    )
+    if (isLoad) return <Stack ml={'48%'} mt={'25%'}><CircularProgress/></Stack>
+    return <Posts error={error} posts={posts} handleAddPost={handleAddPost}/>
 }
 
 export default PostsContainer

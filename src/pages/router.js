@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import HeaderNav from "../components/HeaderNav";
 import AlbumsContainer from "../container/AlbumsContainer";
 import CommentsContainer from "../container/CommentsContainer";
 import PhotosContainer from "../container/PhotosContainer";
@@ -9,30 +10,65 @@ import UsersContainer from "../container/UsersContainer";
 export const router = createBrowserRouter([
     {
       path: "/",
-      element: <div>Корневой роут</div>
+      element: (
+        <>
+          <HeaderNav/>
+          <div>Корневой роут</div>
+        </>
+      )
     },
     {
       path: "/posts",
-      element: <PostsContainer/>
+      element: (
+        <>
+          <HeaderNav/>
+          <PostsContainer/>
+        </>
+      )
     },
     {
       path: '/users',
-      element: <UsersContainer/>
+      element: (
+        <>
+          <HeaderNav/>
+          <UsersContainer/>
+        </>
+      )
     },
     {
       path: '/comments',
-      element: <CommentsContainer/>
+      element: (
+        <>
+          <HeaderNav/>
+          <CommentsContainer/>
+        </>
+      )
     },
     {
       path: '/albums',
-      element: <AlbumsContainer/>
+      element: (
+        <>
+          <HeaderNav/>
+          <AlbumsContainer/>
+        </>
+      )
     },
     {
       path: '/todos',
-      element: <TodosContainer/>
+      element: (
+        <>
+          <HeaderNav/>
+          <TodosContainer/>
+        </>
+      )
     },
     {
       path: '/photos',
-      element: <PhotosContainer/>
+      element: (
+        <>
+          <HeaderNav/>
+          <PhotosContainer/>
+        </>
+      )
     }
 ]);

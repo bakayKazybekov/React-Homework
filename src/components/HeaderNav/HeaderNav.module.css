@@ -1,0 +1,17 @@
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.nav div {
+    color: #fff;
+}

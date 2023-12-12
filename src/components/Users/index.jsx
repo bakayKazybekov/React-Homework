@@ -1,20 +1,26 @@
+import s from './Users.module.scss'
+import { Alert, Button, Card, Col, Flex, Row } from "antd";
+
 function Users ({ users, error, handleAddUser }) {
 
-    if (error) return <h1>{error}</h1>
+    if (error) return <Alert className={s.error} message={error} type='error' showIcon/>
 
     return (
         <>
-            <button onClick={handleAddUser}>Add</button>
-            <ul>
+            <Flex justify='center'>
+                <Button type="primary" onClick={handleAddUser}>Add</Button>
+            </Flex>
+            <Row gutter={[16, 16]}>
                 {users.map(({ name, username, id }) => {
                     return (
-                        <li key={id}>
-                            <h2>{name}</h2>
-                            <h3>{username}</h3>
-                        </li>
+                        <Col span={4} key={id}>
+                            <Card title={`Имя: ${name}`} bordered={false}>
+                                {`Логин: ${username}`}
+                            </Card>
+                        </Col>
                     )
                 })}
-            </ul>
+            </Row>
         </>
     )
 }

@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Albums from "../../components/Albums";
 import { fetchAlbums } from "../../store/albums/actions";
 import { addAlbums } from "../../store/albums/slice";
+import { getAlbums } from "../../store/selectors";
 
 function AlbumsContainer () {
     const dispatch = useDispatch()
 
-    const albums = useSelector((state) => state.albumsReducer.albums)
-    const isLoad = useSelector((state) => state.albumsReducer.isLoad)
-    const error = useSelector((state) => state.albumsReducer.error)
+    const { albums, isLoad, error } = useSelector(getAlbums)
 
     const handleAddAlbum = () => {
         dispatch(addAlbums(
@@ -22,11 +21,8 @@ function AlbumsContainer () {
         dispatch(fetchAlbums())
     }, [dispatch])
 
-    return (
-        <>
-            {isLoad ? <h1>Загрузка Альбомов</h1> : <Albums error={error} albums={albums} handleAddAlbum={handleAddAlbum}/>}
-        </>
-    )
+    if (isLoad) return <h1>Загрузка Альбомов</h1>
+    return <Albums error={error} albums={albums} handleAddAlbum={handleAddAlbum}/>
 }
 
 export default AlbumsContainer
